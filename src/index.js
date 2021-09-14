@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-
-const user ={ 
-    name: "Thao Pham",
-    email: "phamthao@80sgmail.com",
-};
+// #region 1
+// const user ={ 
+//     name: "Thao Pham",
+//     email: "phamthao@80sgmail.com",
+// };
+// #endregion 1
+//#region 2
 // const myfirstelement =(
 // <div className="Hello">
 // <p> <h1> Hello Every one, </h1>
