@@ -15,10 +15,26 @@ const user ={
 //     <h5> If you wanna contact with {user.name}, pls send me email to: {user.email} </h5>
 // </div>
 // );
-var numbers=[1,2,3,4];
-var doubleNumbers=numbers.map((eachNumber)=>eachNumber*2+";");
-ReactDOM.render(<h1>doubleNumbers is: {doubleNumbers} </h1>, document.getElementById('root'));
+//ReactDOM.render(myfirstelement, document.getElementById('root'));
 
-
+//#endregion 2
+//#region 3
+// var numbers=[1,2,3,4];
+// var doubleNumbers=numbers.map((eachNumber)=>eachNumber*2+";");
+// ReactDOM.render(<h1>Double Numbers is: {doubleNumbers} </h1>, document.getElementById('root'));
+//#endregion 3
+//#region 4
+function updateTimer(){
+    const element =(
+        <div>
+            <h1> Timer update example</h1>
+            <h2> Current time now is: {new Date().toLocaleTimeString()}</h2>
+        </div>
+    );
+    ReactDOM.render(element, document.getElementById('root')
+    );
+}
+setInterval(updateTimer,1000);
+//#endregion 4
 
 
