@@ -50,22 +50,32 @@ import './index.css';
 //     );
 //}
 // define Component as class
-class Userinfo extends React.Component{
+
+// we can export this class below to be seperate file
+class UserDetail extends React.Component{ 
     render(){
         return(
-            <div>
             <div className ="UserDetail">
-                 <p>Name: {this.props.name}</p>
-                 <p> Email: {this.props.emai}</p>
-            </div>
-            <div className="OtherInfo">
-                <p> Other Information: {this.props.otherInformation}</p>
-            </div>
-            </div>
+            <p>Name: {this.props.name}</p>
+            <p>Email: {this.props.email}</p>
+       </div>
         );
     }
 }
-const element = <Userinfo name ="Thao Pham" emai ="cindypham88@gmail.com" otherInformation="I like working from Home"/>;
+// the component below can be in a seperate file 
+class Userinfo extends React.Component{ 
+    render(){
+        return(
+        <div>
+            <UserDetail name ={this.props.name} email={this.props.email}/>
+            <div className ="OtherInfo">
+                <p> Other Information: {this.props.otherInformation}</p> 
+            </div> 
+        </div>  
+        );
+    }
+}
+const element = <Userinfo name ="Thao Pham" email ="cindypham88@gmail.com" otherInformation="I like working from Home"/>;
 ReactDOM.render(
     element,
     document.getElementById('root')
