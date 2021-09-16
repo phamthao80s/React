@@ -1,5 +1,4 @@
 import React from 'react';
-import reactDom from 'react-dom';
 import ReactDOM from 'react-dom';
 import './index.css';
 // #region 1
@@ -52,41 +51,79 @@ import './index.css';
 // define Component as class
 
 // we can export this class below to be seperate file
-class UserDetail extends React.Component{ 
-    render(){
-        return(
-            <div className ="UserDetail">
-            <p>Name: {this.props.name}</p>
-            <p>Email: {this.props.email}</p>
-       </div>
-        );
-    }
-}
-// the component below can be in a seperate file 
-class OtherInfo extends React.Component{ 
-    render(){
-        return(
-            <div className ="OtherInfo">
-                <p> Other Information: {this.props.otherInformation}</p> 
-            </div> 
-        );
-    }
-}
-// the component below can be in a seperate file 
-class Userinfo extends React.Component{ 
-    render(){
-        return(
-        <div>
-            <UserDetail name ={this.props.name} email={this.props.email}/>  
-            <OtherInfo otherInformation={this.props.otherInformation}/>
-        </div>  
-       );
-    }
-}
+// class UserDetail extends React.Component{ 
+//     render(){
+//         return(
+//             <div className ="UserDetail">
+//             <p>Name: {this.props.name}</p>
+//             <p>Email: {this.props.email}</p>
+//        </div>
+//         );
+//     }
+// }
+// // the component below can be in a seperate file 
+// class OtherInfo extends React.Component{ 
+//     render(){
+//         return(
+//             <div className ="OtherInfo">
+//                 <p> Other Information: {this.props.otherInformation}</p> 
+//             </div> 
+//         );
+//     }
+// }
+// // the component below can be in a seperate file 
+// class Userinfo extends React.Component{ 
+//     render(){
+//         return(
+//         <div>
+//             <UserDetail name ={this.props.name} email={this.props.email}/>  
+//             <OtherInfo otherInformation={this.props.otherInformation}/>
+//         </div>  
+//        );
+//     }
+// }
 
-const element = <Userinfo name ="Cindy" email ="cindypham88@gmail.com" otherInformation="I like working from Home"/>;
-ReactDOM.render(
-    element,
-    document.getElementById('root')
-);
+// const element = <Userinfo name ="Cindy" email ="cindypham88@gmail.com" otherInformation="I like working from Home"/>;
+// ReactDOM.render(
+//     element,
+//     document.getElementById('root')
+// );
 //#endregion 5 Component and Props
+//#region 6 State and Lifecycle
+class Counter extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state ={seconds:0};
+    }
+    incrementCounter(){
+        this.setState(
+            (
+                prevSate,props)=>({
+                    seconds: prevSate.seconds +1
+
+                })
+            );
+    }
+    componentDidMount (){
+        this.timerID = setInterval(
+            ()=> this.incrementCounter(),
+            1000
+        );
+
+    }
+    componentWillUnmount(){
+        clearInterval(this.timerID);
+
+    }
+    render(){
+        return(
+            <div>
+                <h1> This is a counting machine</h1>
+                <h2> Seconds: {this.state.seconds} s </h2>
+            </div>
+        );
+    }
+    }
+ReactDOM.render(<Counter/>,document.getElementById ('root')
+);
+//#endregion
