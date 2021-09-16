@@ -63,21 +63,30 @@ class UserDetail extends React.Component{
     }
 }
 // the component below can be in a seperate file 
+class OtherInfo extends React.Component{ 
+    render(){
+        return(
+            <div className ="OtherInfo">
+                <p> Other Information: {this.props.otherInformation}</p> 
+            </div> 
+        );
+    }
+}
+// the component below can be in a seperate file 
 class Userinfo extends React.Component{ 
     render(){
         return(
         <div>
-            <UserDetail name ={this.props.name} email={this.props.email}/>
-            <div className ="OtherInfo">
-                <p> Other Information: {this.props.otherInformation}</p> 
-            </div> 
+            <UserDetail name ={this.props.name} email={this.props.email}/>  
+            <OtherInfo otherInformation={this.props.otherInformation}/>
         </div>  
-        );
+       );
     }
 }
-const element = <Userinfo name ="Thao Pham" email ="cindypham88@gmail.com" otherInformation="I like working from Home"/>;
+
+const element = <Userinfo name ="Cindy" email ="cindypham88@gmail.com" otherInformation="I like working from Home"/>;
 ReactDOM.render(
     element,
     document.getElementById('root')
 );
-//#endregion 5
+//#endregion 5 Component and Props
