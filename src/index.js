@@ -159,3 +159,68 @@ import './index.css';
 
 // ReactDOM.render(<Car/>, document.getElementById('root'));
 //#endregion 7
+//region 8 life cycle 
+//ex1  getDerivedStateFromProps
+// class Header extends React.Component{
+//     constructor(props) {
+//         super(props);
+//         this.state= {favoritecolor:"red"};
+    
+//     }
+//    static getDerivedStateFromProps(props, state){
+//        return {favoritecolor: props.favcol};
+//    }
+//     render (){
+//         return(
+//             <h1>
+//                 My favorite color is {this.state.favoritecolor}
+//             </h1>
+//         );
+//     }
+// }
+// ReactDOM.render(<Header favcol ="yellow"/>, document.getElementById ('root'));
+ //ex 2  render
+// class Header extends React.Component {
+//     constructor (props){
+//         super(props);
+//         this.state={favoritecolor:"pink"};
+//     }
+//     changecolor=()=>{
+//         this.setState({favoritecolor:"blue"});
+//     }
+//     render(){
+//         return(
+//             <div>
+//                 <h1> My favorite color is {this.state.favoritecolor} </h1>
+//                 <button type="button" onClick ={this.changecolor}> change color</button>
+
+//             </div>
+//         );
+//     }
+// }
+// ReactDOM.render(<Header />, document.getElementById('root'));
+
+// ex3  shouldComponentUpdate
+// class Header extends React.Component {
+//     constructor(props) {
+//       super(props);
+//       this.state = {favoritecolor: "red"};
+//     }
+//     shouldComponentUpdate() {
+//       return true;
+//     }
+//     changeColor = () => {
+//       this.setState({favoritecolor: "blue"});
+//     }
+//     render() {
+//       return (
+//         <div>
+//         <h1>My Favorite Color is {this.state.favoritecolor}</h1>
+//         <button type="button" onClick={this.changeColor}>Change color</button>
+//         </div>
+//       );
+//     }
+//   }
+  
+//   ReactDOM.render(<Header />, document.getElementById('root'));
+//#endregion 8
