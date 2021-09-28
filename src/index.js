@@ -224,3 +224,23 @@ import './index.css';
   
 //   ReactDOM.render(<Header />, document.getElementById('root'));
 //#endregion 8
+class ToggleButton extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state ={isOn:true};
+    }
+    buttonclick = () => {
+        this.setState(prevsState => ({
+            isOn:!prevsState.isOn
+        }));
+    }
+    render() {  
+        return(
+            <button className="ToggleButton" onClick={this.buttonclick}> This is a toggle button
+            {this.state.isOn? " ON": " OFF"}
+
+            </button>
+        );
+    }
+}
+ReactDOM.render(<ToggleButton/>, document.getElementById ('root'));
