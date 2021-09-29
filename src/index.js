@@ -271,36 +271,54 @@ import './index.css';
 // ReactDOM.render(<ToggleButton/>, document.getElementById ('root'));
 //#endregion 9
 //#region 10 Conditional Rendering
-class LoginComponent extends React.Component{
+// class LoginComponent extends React.Component{
+//     constructor(props){
+//         super(props);
+//         this.state = {isLoggedIn: false};
+//     }
+//     handleLogout = () => {
+//         this.setState({isLoggedIn:false});
+//     }
+//     handleLogin = () => {
+//         this.setState({isLoggedIn:true});
+//     }
+//     render(){
+//         let myButton = null;
+//         let title = null;
+//         if(this.state.isLoggedIn){
+//             myButton= <button onClick={ this.handleLogout}> Log Out </button>
+//         }
+//         else
+//         {
+//             myButton= <button onClick={ this.handleLogin}> Log In </button>  
+//         }
+//         title= this.state.isLoggedIn? <h1> Logged In </h1>: <h1> Logged Out</h1>
+//         return (
+//             <div>
+//                 {title}
+//                 {myButton}
+//             </div>
+//         );
+//     }
+// }
+// ReactDOM.render(<LoginComponent/>,document.getElementById('root')
+// );
+class Mailcomponent extends React.Component{
     constructor(props){
-        super(props);
-        this.state = {isLoggedIn: false};
-    }
-    handleLogout = () => {
-        this.setState({isLoggedIn:false});
-    }
-    handleLogin = () => {
-        this.setState({isLoggedIn:true});
+        super(props)
     }
     render(){
-        let myButton = null;
-        let title = null;
-        if(this.state.isLoggedIn){
-            myButton= <button onClick={ this.handleLogout}> Log Out </button>
-        }
-        else
-        {
-            myButton= <button onClick={ this.handleLogin}> Log In </button>  
-        }
-        title= this.state.isLoggedIn? <h1> Logged In </h1>: <h1> Logged Out</h1>
-        return (
+        return(
             <div>
-                {title}
-                {myButton}
+                <h1>
+                    Mail statistic</h1>
+                    {this.props.newMessages.length>0 &&
+                    <h2> You have {this.props.newMessages.length} New messages.</h2>
+                    }
             </div>
         );
     }
 }
-ReactDOM.render(<LoginComponent/>,document.getElementById('root')
+ReactDOM.render(<Mailcomponent newMessages = {['how are you?', 'are you online?', 'hello']}/>, document.getElementById('root')
 );
 //#endregion 10
