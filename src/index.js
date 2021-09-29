@@ -225,6 +225,7 @@ import './index.css';
 //   ReactDOM.render(<Header />, document.getElementById('root'));
 //#endregion 8
 //#region 9 event
+
 // class ToggleButton extends React.Component{
 //     constructor(props) {
 //         super(props);
@@ -246,25 +247,60 @@ import './index.css';
 // }
 // ReactDOM.render(<ToggleButton/>, document.getElementById ('root'));
 
-class ToggleButton extends React.Component{
-    constructor(props) {
-        super(props);
-        this.state ={isOn:true};
-        this.buttonclick = this.buttonclick.bind(this);
-    }
-    buttonclick() {
-        this.setState(prevstate => ({
-            isOn:!prevstate.isOn
-        }
-        ));
-    }
-    render() {  
-        return(
-            <button className="ToggleButton" onClick={this.buttonclick}> This is a toggle button
-            {this.state.isOn? " ON": " OFF"}
+// class ToggleButton extends React.Component{
+//     constructor(props) {
+//         super(props);
+//         this.state ={isOn:true};
+//         this.buttonclick = this.buttonclick.bind(this);
+//     }
+//     buttonclick() {
+//         this.setState(prevstate => ({
+//             isOn:!prevstate.isOn
+//         }
+//         ));
+//     }
+//     render() {  
+//         return(
+//             <button className="ToggleButton" onClick={this.buttonclick}> This is a toggle button
+//             {this.state.isOn? " ON": " OFF"}
 
-            </button>
+//             </button>
+//         );
+//     }
+// }
+// ReactDOM.render(<ToggleButton/>, document.getElementById ('root'));
+//#endregion 9
+//#region 10 Conditional Rendering
+class LoginComponent extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {isLoggedIn: false};
+    }
+    handleLogout = () => {
+        this.setState({isLoggedIn:false});
+    }
+    handleLogin = () => {
+        this.setState({isLoggedIn:true});
+    }
+    render(){
+        let myButton = null;
+        let title = null;
+        if(this.state.isLoggedIn){
+            myButton= <button onClick={ this.handleLogout}> Log Out </button>
+        }
+        else
+        {
+            myButton= <button onClick={ this.handleLogin}> Log In </button>  
+        }
+        title= this.state.isLoggedIn? <h1> Logged In </h1>: <h1> Logged Out</h1>
+        return (
+            <div>
+                {title}
+                {myButton}
+            </div>
         );
     }
 }
-ReactDOM.render(<ToggleButton/>, document.getElementById ('root'));
+ReactDOM.render(<LoginComponent/>,document.getElementById('root')
+);
+//#endregion 10
