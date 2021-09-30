@@ -89,7 +89,7 @@ import './index.css';
 //     document.getElementById('root')
 // );
 //#endregion 5 Component and Props
-// //#region 6 State and Lifecycle
+//#region 6 State and Lifecycle
 // class Counter extends React.Component{
 //     constructor(props) {
 //         super(props);
@@ -303,22 +303,43 @@ import './index.css';
 // }
 // ReactDOM.render(<LoginComponent/>,document.getElementById('root')
 // );
-class Mailcomponent extends React.Component{
+// class Mailcomponent extends React.Component{
+//     constructor(props){
+//         super(props)
+//     }
+//     render(){
+//         return(
+//             <div>
+//                 <h1>
+//                     Mail statistic</h1>
+//                     {this.props.newMessages.length>0 &&
+//                     <h2> You have {this.props.newMessages.length} New messages.</h2>
+//                     }
+//             </div>
+//         );
+//     }
+// }
+// ReactDOM.render(<Mailcomponent newMessages = {['how are you?', 'are you online?', 'hello']}/>, document.getElementById('root')
+// );
+//#endregion 10
+//#region 11 using list and key to render more diffirent component
+function ListItem(props){
+    return<li> {props.value}</li>;
+}
+class AnimalsComponent extends React.Component{
     constructor(props){
-        super(props)
-    }
+        super(props);
+        this.listItems = props.animals.map(
+            (animal, index)=> <ListItem key = {animal} value = {index.toString() + "-" + animal}/>
+                                          );
+    }  
     render(){
-        return(
-            <div>
-                <h1>
-                    Mail statistic</h1>
-                    {this.props.newMessages.length>0 &&
-                    <h2> You have {this.props.newMessages.length} New messages.</h2>
-                    }
-            </div>
-        );
+        return(<ul>
+            {this.listItems}
+        </ul>
+              );
     }
 }
-ReactDOM.render(<Mailcomponent newMessages = {['how are you?', 'are you online?', 'hello']}/>, document.getElementById('root')
+const animals = ["lion", "tiger", "dog", "dinosaur"];
+ReactDOM.render(<AnimalsComponent animals={animals}/>,document.getElementById ('root')
 );
-//#endregion 10
