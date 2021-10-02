@@ -323,23 +323,51 @@ import './index.css';
 // );
 //#endregion 10
 //#region 11 using list and key to render more diffirent component
-function ListItem(props){
-    return<li> {props.value}</li>;
-}
-class AnimalsComponent extends React.Component{
+// function ListItem(props){
+//     return<li> {props.value}</li>;
+// }
+// class AnimalsComponent extends React.Component{
+//     constructor(props){
+//         super(props);
+//         this.listItems = props.animals.map(
+//             (animal, index)=> <ListItem key = {animal} value = {index.toString() + "-" + animal}/>
+//                                           );
+//     }  
+//     render(){
+//         return(<ul>
+//             {this.listItems}
+//         </ul>
+//               );
+//     }
+// }
+// const animals = ["lion", "tiger", "dog", "dinosaur"];
+// ReactDOM.render(<AnimalsComponent animals={animals}/>,document.getElementById ('root')
+// );
+//#endregion 11
+//#endregion 12 Form in React
+class FormComponent extends React.Component {
     constructor(props){
         super(props);
-        this.listItems = props.animals.map(
-            (animal, index)=> <ListItem key = {animal} value = {index.toString() + "-" + animal}/>
-                                          );
-    }  
-    render(){
-        return(<ul>
-            {this.listItems}
-        </ul>
-              );
+        this.state={textData: ""};
+        }
+        handleChange= (event)=>{
+            this.setState({textData: event.target.value});
+        }
+        handleSubmit=(event) =>{
+            alert("You submited text data: "+this.state.textData);
+            event.preventDefault();
+        }
+        render(){
+            return(
+                <form onSubmit ={this.handleSubmit} >
+                    <label>
+                        your name:
+                        <input type="text" value ={this.state.textData} onChange={this.handleChange}/>
+                            </label>
+                            <input type ="submit" value ="Submit your name"></input>
+                </form>
+            );
+        }
     }
-}
-const animals = ["lion", "tiger", "dog", "dinosaur"];
-ReactDOM.render(<AnimalsComponent animals={animals}/>,document.getElementById ('root')
-);
+ReactDOM.render(
+    <FormComponent/>,document.getElementById ('root'));
