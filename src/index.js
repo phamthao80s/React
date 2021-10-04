@@ -344,30 +344,75 @@ import './index.css';
 // ReactDOM.render(<AnimalsComponent animals={animals}/>,document.getElementById ('root')
 // );
 //#endregion 11
-//#endregion 12 Form in React
+//#region 12 Form in React
+// class FormComponent extends React.Component {
+//     constructor(props){
+//         super(props);
+//         this.state={textData: ""};
+//         }
+//         handleChange= (event)=>{
+//             this.setState({textData: event.target.value});
+//         }
+//         handleSubmit=(event) =>{
+//             alert("You submited text data: "+this.state.textData);
+//             event.preventDefault();
+//         }
+//         render(){
+//             return(
+//                 <form onSubmit ={this.handleSubmit} >
+//                     <label>
+//                         your name:
+//                         <input type="text" value ={this.state.textData} onChange={this.handleChange}/>
+//                             </label>
+//                             <input type ="submit" value ="Submit your name"></input>
+//                 </form>
+//             );
+//         }
+//     }
+// ReactDOM.render(
+//     <FormComponent/>,document.getElementById ('root'));
+//#endregion
+//#region 13 handle many input
 class FormComponent extends React.Component {
     constructor(props){
-        super(props);
-        this.state={textData: ""};
-        }
-        handleChange= (event)=>{
-            this.setState({textData: event.target.value});
-        }
-        handleSubmit=(event) =>{
-            alert("You submited text data: "+this.state.textData);
-            event.preventDefault();
-        }
-        render(){
-            return(
-                <form onSubmit ={this.handleSubmit} >
-                    <label>
-                        your name:
-                        <input type="text" value ={this.state.textData} onChange={this.handleChange}/>
-                            </label>
-                            <input type ="submit" value ="Submit your name"></input>
-                </form>
-            );
-        }
+    super(props);
+    this.state={
+        yourName:'',
+        numberOfFriends:0
+    };
+     }
+    handleChange= (event)=>{
+    this.setState({
+        [event.target.name]:event.target.value
+                   });
     }
-ReactDOM.render(
-    <FormComponent/>,document.getElementById ('root'));
+    handleSubmit=(event) =>{
+    alert("You submited text data: "+ 'Your name is ' +this.state.yourName+', you has ' + this.state.numberOfFriends +' Friends');
+    event.preventDefault();
+   }
+
+   render(){
+    return(
+   <form onSubmit ={this.handleSubmit} className ="inputForm">
+    <label>
+    Name:
+    <input type="text" 
+    value ={this.state.textData} 
+    name="yourName"
+    onChange={this.handleChange}/>
+    </label> <br/>
+<label> 
+    Number of your firends:
+    <input type ="number"
+    name="numberOfFriends"
+    value={this.state.numberOfFriends}
+    onChange={this.handleChange}/>
+</label>
+  <input type ="submit" value ="Submit"></input>
+    </form>
+            );
+   }
+   }
+   ReactDOM.render(
+   <FormComponent/>,document.getElementById ('root')
+   );
