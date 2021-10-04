@@ -41,3 +41,11 @@ background-color: violet;
 .input{
   background-color: cadetblue;
 }
+.red{
+  background-color: red;
+  color: aliceblue;
+}
+.green{
+  background-color: green;
+  color: aliceblue;
+}

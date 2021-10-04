@@ -373,46 +373,85 @@ import './index.css';
 //     <FormComponent/>,document.getElementById ('root'));
 //#endregion
 //#region 13 handle many input
-class FormComponent extends React.Component {
-    constructor(props){
-    super(props);
-    this.state={
-        yourName:'',
-        numberOfFriends:0
-    };
-     }
-    handleChange= (event)=>{
-    this.setState({
-        [event.target.name]:event.target.value
-                   });
-    }
-    handleSubmit=(event) =>{
-    alert("You submited text data: "+ 'Your name is ' +this.state.yourName+', you has ' + this.state.numberOfFriends +' Friends');
-    event.preventDefault();
-   }
 
-   render(){
-    return(
-   <form onSubmit ={this.handleSubmit} className ="inputForm">
-    <label>
-    Name:
-    <input type="text" 
-    value ={this.state.textData} 
-    name="yourName"
-    onChange={this.handleChange}/>
-    </label> <br/>
-<label> 
-    Number of your firends:
-    <input type ="number"
-    name="numberOfFriends"
-    value={this.state.numberOfFriends}
-    onChange={this.handleChange}/>
-</label>
-  <input type ="submit" value ="Submit"></input>
-    </form>
-            );
+// class FormComponent extends React.Component {
+//     constructor(props){
+//     super(props);
+//     this.state={
+//         yourName:'',
+//         numberOfFriends:0
+//     };
+//      }
+//     handleChange= (event)=>{
+//     this.setState({
+//         [event.target.name]:event.target.value
+//                    });
+//     }
+//     handleSubmit=(event) =>{
+//     alert("You submited text data: "+ 'Your name is ' +this.state.yourName+', you has ' + this.state.numberOfFriends +' Friends');
+//     event.preventDefault();
+//    }
+
+//    render(){
+//     return(
+//    <form onSubmit ={this.handleSubmit} className ="inputForm">
+//     <label>
+//     Name:
+//     <input type="text" 
+//     value ={this.state.textData} 
+//     name="yourName"
+//     onChange={this.handleChange}/>
+//     </label> <br/>
+// <label> 
+//     Number of your firends:
+//     <input type ="number"
+//     name="numberOfFriends"
+//     value={this.state.numberOfFriends}
+//     onChange={this.handleChange}/>
+// </label>
+//   <input type ="submit" value ="Submit"></input>
+//     </form>
+//             );
+//    }
+//    }
+//    ReactDOM.render(
+//    <FormComponent/>,document.getElementById ('root')
+//    );
+   //#endregion 13
+//#region 14 Composition and inheritance
+   class PaneComponent extends React.Component{
+       constructor(props){
+           super(props);
+       }
+       render() {
+           return(
+           <div> 
+               {this.props.up}
+               {this.props.children}
+               {this.props.down}
+              
+           </div>
+           );
+       }
    }
+   function UpComponent(props){
+       return (<div className="red">
+           this is Red 
+       </div>
+               );
    }
-   ReactDOM.render(
-   <FormComponent/>,document.getElementById ('root')
+   function DownComponent(props){
+       return(
+           <div className ="green">
+               this is Green
+           </div>
+       );
+   }
+   ReactDOM.render(<PaneComponent 
+    up={<UpComponent/>} 
+    down = {<DownComponent/>} >
+        <p>This is a Children part</p>
+    </PaneComponent>
+    , document.getElementById ('root')
    );
+   //#endregion
